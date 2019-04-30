@@ -32,17 +32,20 @@ var itemSchema = new Schema({
     number: String, // 项目编号
     category: String, // 项目类别
     name: String, // 项目名称
+    totalInvestment: String, // 计划投资总额
+    backGround: String, // 项目背景
     target: String, // 项目目标
+    createTime: Number, // 立项时间
     deadline: Number, // 项目期限
     manager:String, //项目经理
     expectedReturn: String, // 预期收益
-    manager:String,// 项目经理
     corePersonnel: Array, //核心人员
     keyPersonnel: Array, //主要人员
     progress: Object, // 项目进度
     nextWeekPlan: String, //下一步计划
     leaderHelp: String, // 领导帮助
     department: Number, // 立项部门
+    proposer:  String, // 申请人
 });
 //返回值 document的模板
 var ItemDoc = mongoose.model('item',itemSchema,'projectList');
@@ -50,13 +53,22 @@ var ItemDoc = mongoose.model('item',itemSchema,'projectList');
 //向数据库插入数据
 exports.add = function (list, cb) {
     var item = new ItemDoc({
-        number: list.number, // 项目编号
-        category: list.category, // 项目类别
-        name: list.name, // 项目名称
-        target: list.target, // 项目目标
-        deadline: list.deadline, // 项目期限
-        manager: list.manager, //项目经理
-        expectedReturn: list.expectedReturn, // 预期收益
+        number:  list.number, // 项目编号
+        name:  list.name, // 项目名称
+        category: list.category,// 项目类别
+        backGround: list.backGround, // 项目背景
+        target:  list.target, // 项目目标
+        deadline: list.deadline, // 完成期限
+        totalInvestment: list.totalInvestment, // 计划投资总额
+        expectedReturn:  list.expectedReturn, // 预期收益
+        manager:  list.manager, //项目经理
+        corePersonnel:  list.corePersonnel, //核心人员
+        keyPersonnel:  list.keyPersonnel, // 主要人员
+        proposer:  list.proposer, // 申请人
+        department: list.department, // 立项部门
+        progress: list.progress, // 项目进度
+        nextWeekPlan: list.nextWeekPlan, //下一步计划
+        leaderHelp: list.leaderHelp, // 领导帮助
     });
     item.save(function (err) {
         if (err){

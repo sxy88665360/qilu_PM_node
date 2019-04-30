@@ -5,7 +5,7 @@ var PM_moudel = require('../module/PM_module');
 // router.get('/testSSM/selectProject.do', )
 
 //增加列表
-router.post('/new', PM_moudel.new);
+router.post('/projectApi/new', PM_moudel.new);
 
 // 删除列表
 router.post('/delete', PM_moudel.delete);
