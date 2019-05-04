@@ -35,14 +35,26 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // 跨域
-app.all('*', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://10.22.20.206:8081");
-  res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
-  res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-  // res.header("X-Powered-By",' 3.2.1');
-  res.header("Access-Control-Allow-Credentials", true);
-  if(req.method=="OPTIONS") res.sendStatus(200);/*让options请求快速返回*/
-  else  next();
+// app.all('*', function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "http://127.0.0.1:8081");
+//   res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+//   res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+//   res.header("Access-Control-Allow-Credentials", true);
+//   if(req.method=="OPTIONS") res.sendStatus(200);/*让options请求快速返回*/
+//   else  next();
+// });
+app.all('*', function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Content-Length, Authorization,Origin,Accept,X-Requested-With');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('X-Powered-By', ' 3.2.1');
+  res.header('Content-Type', 'application/json;charset=utf-8');
+  if (req.method === 'OPTIONS') {
+      res.sendStatus(200);
+  } else {
+      next();
+  }
 });
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);

@@ -15,7 +15,7 @@ function connect() {
     });
     db.on('error', function (err) {
         if (err) throw err;
-    })
+    });
 }
 exports.connect = connect;
 
@@ -39,8 +39,8 @@ var itemSchema = new Schema({
     deadline: Number, // 项目期限
     manager:String, //项目经理
     expectedReturn: String, // 预期收益
-    corePersonnel: Array, //核心人员
-    keyPersonnel: Array, //主要人员
+    corePersonnel: String, //核心人员
+    keyPersonnel: String, //主要人员
     progress: Object, // 项目进度
     nextWeekPlan: String, //下一步计划
     leaderHelp: String, // 领导帮助
