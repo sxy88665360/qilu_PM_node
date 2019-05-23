@@ -1,8 +1,12 @@
 var dao = require('../DB/project_list_DB');
 // 检索所有的列表
 var findAll = function (req, res, next) {
+    var pageSize = null;
+    var pageNum = null;
     var list = null;
     var data = req.body;
+    console.log(data,"data");
+    console.log(req.query,"query");
     var flag = 0;
     var arrList = {};
     var arr = Object.keys(data);
@@ -15,12 +19,13 @@ var findAll = function (req, res, next) {
         data = {};
     }
     // console.log(flag,"flag");
-    // console.log(arrList,"arrList");
+    console.log(arrList,"arrList");
     dao.findAll(arrList, function (err,doc) {
         if (err){
             next(err);
         }else{
             var data = doc;
+            console.log(pageSize,"pageSize");
             var response = {
                 code: 1,
                 data:data,
