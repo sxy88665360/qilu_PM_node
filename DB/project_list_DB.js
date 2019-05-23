@@ -41,10 +41,10 @@ var itemSchema = new Schema({
     expectedReturn: String, // 预期收益
     corePersonnel: String, //核心人员
     keyPersonnel: String, //主要人员
-    progress: Object, // 项目进度
+    progress: String, // 项目进度
     nextWeekPlan: String, //下一步计划
     leaderHelp: String, // 领导帮助
-    department: Number, // 立项部门
+    department: String, // 立项部门
     proposer:  String, // 申请人
 });
 //返回值 document的模板
