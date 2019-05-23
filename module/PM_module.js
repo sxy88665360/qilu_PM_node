@@ -25,10 +25,12 @@ var findAll = function (req, res, next) {
             next(err);
         }else{
             var data = doc;
+            var total = data.length;
             console.log(pageSize,"pageSize");
             var response = {
                 code: 1,
                 data:data,
+                total:total,
                 message: 'OK',
                 timestamp: Date.now(),
             } ;
