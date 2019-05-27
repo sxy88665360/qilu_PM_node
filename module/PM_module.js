@@ -75,7 +75,13 @@ var newItem = function (req, res, next) {
         if (err){
             next(err);
         }else{
-            res.send(list);
+            var response = {
+                code: 1,
+                message: 'OK',
+                timestamp: Date.now(),
+            } ;
+            res.send(response);
+           // res.send(list);
         }
     })
 };
