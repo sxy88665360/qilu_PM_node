@@ -3,7 +3,10 @@ var router = require('express').Router();
 var PM_moudel = require('../module/PM_module');
 // 获取列表
 // router.get('/testSSM/selectProject.do', )
-
+/*
+* 项目列表操作
+* By xiaoyang.shang
+* */
 //增加列表
 router.post('/projectApi/new', PM_moudel.new);
 

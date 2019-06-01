@@ -27,6 +27,9 @@ function disconnect() {
 }
 exports.disconnect = disconnect;
 
+/*
+* 项目列表数据库操作
+* */
 var Schema = mongoose.Schema;
 var itemSchema = new Schema({
     number: String, // 项目编号
@@ -41,7 +44,7 @@ var itemSchema = new Schema({
     expectedReturn: String, // 预期收益
     corePersonnel: String, //核心人员
     keyPersonnel: String, //主要人员
-    progress: String, // 项目进度
+    progress: String, //项目进度
     nextWeekPlan: String, //下一步计划
     leaderHelp: String, // 领导帮助
     department: String, // 立项部门
@@ -98,7 +101,7 @@ exports.remove = function (item, cb) {
             })
         }
     })
-}
+};
 // 数据库修改数据
 var editList = function (id, list, cb) {
     // ItemDoc.findOne({_id: id}, function (err, doc) {
