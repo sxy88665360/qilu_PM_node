@@ -1,4 +1,6 @@
-var dao = require('../DB/project_list_DB');
+var dao = require('../DB/index');
+//var dao = require('../DB/project_list_DB');
+
 // 检索所有的列表
 var findAll = function (req, res, next) {
     var pageSize = null;
