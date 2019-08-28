@@ -23,7 +23,7 @@ router.post('/edit', PM_moudel.edit);
 /*
 *用户列表操作
 * */
-router.post('/userList',user_list_module.newUser);
+router.get('/userList',user_list_module.newUser);
 
 
 

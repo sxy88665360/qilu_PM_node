@@ -11,7 +11,7 @@ var userSchema = new Schema({
 });
 
 //返回document模板
-var ItemDoc = mongoose.model('item',userSchema,'projectList');
+var ItemDoc = mongoose.model('userList',userSchema,'userList');
 exports.add_user = function (list, cb) {
     var userItem = new ItemDoc ({
         username: list.username,
