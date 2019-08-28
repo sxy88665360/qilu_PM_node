@@ -1,6 +1,7 @@
 //
 var router = require('express').Router();
 var PM_moudel = require('../module/PM_module');
+var user_list_module = require('../module/user_list_module');
 // 获取列表
 // router.get('/testSSM/selectProject.do', )
 /*
@@ -18,4 +19,12 @@ router.post('/projectApi/findAll', PM_moudel.findList);
 
 // 修改项目
 router.post('/edit', PM_moudel.edit);
+
+/*
+*用户列表操作
+* */
+router.post('/userList',user_list_module.newUser);
+
+
+
 module.exports = router;
