@@ -7,7 +7,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var userSchema = new Schema({
     username: String,
-   password: String
+    password: String,
+    department: String,
 });
 
 //返回document模板
@@ -15,7 +16,8 @@ var ItemDoc = mongoose.model('userList',userSchema,'userList');
 exports.add_user = function (list, cb) {
     var userItem = new ItemDoc ({
         username: list.username,
-        password: list.password
+        password: list.password,
+        department:list.department
     });
     userItem.save(function (err) {
         if (err) {

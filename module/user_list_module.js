@@ -4,8 +4,9 @@ var user_dao = require('../DB/user_DB');
 var newItem = function (req, res, next) {
     //1.向数据库写入数据
     var list = {
-        username: req.username,
-        password: req.password,
+        username: req.query.username,
+        password: req.query.password,
+        department:req.query.department
     };
     console.log(list,"userList");
     user_dao.add_user(list, function (err) {
