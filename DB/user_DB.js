@@ -27,3 +27,8 @@ exports.add_user = function (list, cb) {
         }
     })
 };
+
+// 用户登录
+exports.loginCheck = function (list, cb) {
+    
+}

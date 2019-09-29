@@ -23,7 +23,9 @@ router.post('/edit', PM_moudel.edit);
 /*
 *用户列表操作
 * */
-router.get('/userList',user_list_module.newUser);
+// 登录
+router.post('/login', user_list_module.login);
+router.get('/userList', user_list_module.newUser);
 
 
 

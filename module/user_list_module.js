@@ -3,6 +3,7 @@ var user_dao = require('../DB/user_DB');
 // 添加新的用户
 var newItem = function (req, res, next) {
     //1.向数据库写入数据
+
     var list = {
         username: req.query.username,
         password: req.query.password,
@@ -23,3 +24,12 @@ var newItem = function (req, res, next) {
     })
 };
 exports.newUser = newItem;
+// 用户登录
+var login = function (req, res, next) {
+  var list = {
+      username: req.query.username,
+      password: req.query.password,
+  }
+    user_dao.loginCheck()
+};
+exports.login = login;
