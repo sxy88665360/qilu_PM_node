@@ -7,7 +7,7 @@ var logger = require('morgan');
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 //引入模块
-var db = require('./DB/index');
+var db = require('./DB/project_DB/index');
  //var db = require('./DB/project_list_DB');
 // var user_db = require('/DB/user_DB);
 var router = require('./routes/PM_Router');

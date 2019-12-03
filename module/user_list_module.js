@@ -1,4 +1,4 @@
-var user_dao = require('../DB/user_DB');
+var user_dao = require('../DB/user_DB/user_DB');
 
 // 添加新的用户
 var newItem = function (req, res, next) {
