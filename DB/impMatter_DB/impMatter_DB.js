@@ -47,3 +47,22 @@ var itemSchema = new Schema({
     //     }
     // ]
 })
+
+// 返回值 document 模板
+var ItemDoc = mongoose.model('item', itemSchema, 'impMatter');
+
+// 向数据库插入数据
+exports.add = function (list, cb) {
+    var item = new ItemDoc({
+        description: list.description, // 事项描述
+    // real_progress: Object, // 实时进度
+    plan_progress: [
+        {
+            data: '',
+            time:Number
+        }
+    ], // 计划进度
+    real_time: Number,
+    category: String,
+    })
+}
