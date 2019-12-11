@@ -2,6 +2,7 @@
 var router = require('express').Router();
 var PM_moudel = require('../module/PM_module');
 var user_list_module = require('../module/user_list_module');
+var impMatter_module = require('../module/impMatter_module');  // 督办事项
 // 获取列表
 // router.get('/testSSM/selectProject.do', )
 /*
@@ -27,6 +28,10 @@ router.post('/edit', PM_moudel.edit);
 router.post('/login', user_list_module.login);
 router.get('/userList', user_list_module.newUser);
 
+/*
+*  督办事项
+*/
+router.post('/impMatter', impMatter_module.new);
 
 
 module.exports = router;
