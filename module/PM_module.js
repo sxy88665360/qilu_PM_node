@@ -67,7 +67,6 @@ var newItem = function (req, res, next) {
         nextWeekPlan: req.body.nextWeekPlan, //下一步计划
         leaderHelp: req.body.leaderHelp, // 领导帮助
     };
-    // console.log(JSON.stringify(list), "list");
     console.log(list, "list");
     // if(!req.bady){
     //     var error = new error('无数据提交');
