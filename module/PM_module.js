@@ -1,6 +1,5 @@
-var dao = require('../DB/project_DB/index');
-//var dao = require('../DB/project_list_DB');
-
+//var dao = require('../DB/project_DB/index');
+const dao = require('../DB/project_DB/project_list_DB');
 // 检索所有的列表
 var findAll = function (req, res, next) {
     var pageSize = null;
@@ -8,7 +7,7 @@ var findAll = function (req, res, next) {
     var list = null;
     var data = req.body;
     // console.log(data,"data");
-    // console.log(req.query,"query");
+    console.log(req.query,"query");
     var flag = 0;
     var arrList = {};
     var arr = Object.keys(data);
@@ -42,6 +41,7 @@ var findAll = function (req, res, next) {
     // console.log(data,"data");
 
 };
+
 exports.findList = findAll;
 // 添加新的item
 var newItem = function (req, res, next) {

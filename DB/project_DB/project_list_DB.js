@@ -1,61 +1,9 @@
-var mongoose = require('mongoose');
-var dbURL = 'mongodb://127.0.0.1:27017/qilu_PM';
-var db = null;
-
-// 建立数据库连接
-function connect() {
-    //连接
-    mongoose.connect(dbURL,{ useNewUrlParser: true });
-    // 获取连接对象
-    db = mongoose.connection;
-    //注册事件回调
-    db.on('open', function (err) {
-        if(err) throw err;
-        console.log('opened');
-    });
-    db.on('error', function (err) {
-        if (err) throw err;
-    });
-}
-exports.connect = connect;
-
-//断开数据库连接
-function disconnect() {
-    //断开连接
-    mongoose.disconnect();
-    db = null;
-}
-exports.disconnect = disconnect;
-
-/*
-* 项目列表数据库操作
-* */
-var Schema = mongoose.Schema;
-var itemSchema = new Schema({
-    number: String, // 项目编号
-    category: String, // 项目类别
-    name: String, // 项目名称
-    totalInvestment: String, // 计划投资总额
-    backGround: String, // 项目背景
-    target: String, // 项目目标
-    createTime: Number, // 立项时间
-    deadline: Number, // 项目期限
-    manager:String, //项目经理
-    expectedReturn: String, // 预期收益
-    corePersonnel: String, //核心人员
-    keyPersonnel: String, //主要人员
-    progress: String, //项目进度
-    nextWeekPlan: String, //下一步计划
-    leaderHelp: String, // 领导帮助
-    department: String, // 立项部门
-    proposer:  String, // 申请人
-});
-//返回值 document的模板
-var ItemDoc = mongoose.model('item',itemSchema,'projectList');
+let dbs = require('../dbModel/index');
+let Project = dbs.Project;
 
 //向数据库插入数据
 exports.add = function (list, cb) {
-    var item = new ItemDoc({
+    var item = new Project({
         number:  list.number, // 项目编号
         name:  list.name, // 项目名称
         category: list.category,// 项目类别
@@ -104,7 +52,7 @@ exports.remove = function (item, cb) {
 };
 // 数据库修改数据
 var editList = function (id, list, cb) {
-    // ItemDoc.findOne({_id: id}, function (err, doc) {
+    // Project.findOne({_id: id}, function (err, doc) {
     //     if(err){
     //         cb(err);
     //     }else{
@@ -137,7 +85,7 @@ var editList = function (id, list, cb) {
 exports.edit = editList;
 // 根据id寻找document
 var findById = function (id, cb) {
-  ItemDoc.findOne({_id: id}, function (err, doc) {
+  Project.findOne({_id: id}, function (err, doc) {
       if(err){
           cb(err);
       }else{
@@ -149,7 +97,7 @@ exports.findById = findById;
 
 //搜索出所有数据
 exports.findAll = function(data, cb){
-    ItemDoc.find(data, function(err, result){
+    Project.find(data, function(err, result){
         if(err){
             cb(null, err);
         }
