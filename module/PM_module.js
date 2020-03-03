@@ -48,6 +48,7 @@ var newItem = function (req, res, next) {
   //1.向数据库写入数据
   //2.列表需要更新
   //1.写入数据
+    // console.log(req.body,"body");
     var list = {
         // category: req.body.category,
         number:  req.body.number, // 项目编号
@@ -64,8 +65,8 @@ var newItem = function (req, res, next) {
         proposer:  req.body.proposer, //项目经理
         department: req.body.department, // 立项部门
         progress: req.body.progress, // 项目进度
-        nextWeekPlan: req.body.nextWeekPlan, //下一步计划
-        leaderHelp: req.body.leaderHelp, // 领导帮助
+        // nextWeekPlan: req.body.nextWeekPlan, //下一步计划
+        // leaderHelp: req.body.leaderHelp, // 领导帮助
     };
     console.log(list, "list");
     // if(!req.bady){

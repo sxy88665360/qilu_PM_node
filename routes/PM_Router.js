@@ -10,13 +10,13 @@ let impMatter_module = require('../module/impMatter_module');  // 督办事项
 * By xiaoyang.shang
 * */
 //增加列表
-router.post('/projectApi/new', PM_moudel.new);
+router.post('/new', PM_moudel.new);
 
 // 删除列表
 router.post('/delete', PM_moudel.delete);
 
 // 检索所有列表
-router.post('/projectApi/findAll', PM_moudel.findList);
+router.post('/findAll', PM_moudel.findList);
 
 // 修改项目
 router.post('/edit', PM_moudel.edit);

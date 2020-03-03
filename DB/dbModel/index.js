@@ -3,6 +3,12 @@ let Schema = mongoose.Schema;
 /*
 * 项目列表
 */
+const Progress = new Schema({
+    number: String, // 项目编号
+    name: String, // 分享名称
+    principal: String, //负责人
+    time: Number, //完成时间
+});
 const Project = new Schema({
     number: String, // 项目编号
     category: String, // 项目类别
@@ -16,20 +22,18 @@ const Project = new Schema({
     expectedReturn: String, // 预期收益
     corePersonnel: String, //核心人员
     keyPersonnel: String, //主要人员
-    progress: String, //项目进度
-    nextWeekPlan: String, //下一步计划
-    leaderHelp: String, // 领导帮助
+    // progress: String, //项目进度
+   //  nextWeekPlan: String, //下一步计划
+    // leaderHelp: String, // 领导帮助
     department: String, // 立项部门
     proposer:  String, // 申请人
+    // children: [Progress],
+    progress: [Progress],
+    //progress:Progress
 });
-const Progress = new Schema({
-    number: String, // 项目编号
-    name: String, // 分享名称
-    principal: String, //负责人
-    time: Number, //完成时间
-});
+
 const dbs = {};
 dbs.Project = mongoose.model('item',Project,'projectList');
-dbs.Progress = mongoose.model('Project', Progress, 'progressList');
+// dbs.Progress = mongoose.model('Project', Progress, 'progressList');
 module.exports = dbs;
 // exports.dbs = dbs;

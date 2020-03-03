@@ -18,16 +18,21 @@ exports.add = function (list, cb) {
         proposer:  list.proposer, // 申请人
         department: list.department, // 立项部门
         progress: list.progress, // 项目进度
-        nextWeekPlan: list.nextWeekPlan, //下一步计划
-        leaderHelp: list.leaderHelp, // 领导帮助
+       // nextWeekPlan: list.nextWeekPlan, //下一步计划
+        // leaderHelp: list.leaderHelp, // 领导帮助
     });
     item.save(function (err) {
-        if (err){
-            return cb(err);
-        } else {
-            return cb(null);
-        }
-    });
+            if (err){
+                return cb(err);
+            } else {
+                return cb(null);
+            }
+        });
+    // item.save().then(function (item) {
+    //
+    //     // console.log(item,'item');
+    //     return cb(null);
+    // });
 };
 
 // 数据库查询数据

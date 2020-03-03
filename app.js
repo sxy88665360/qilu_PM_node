@@ -1,19 +1,21 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+let createError = require('http-errors');
+let express = require('express');
+let path = require('path');
+let cookieParser = require('cookie-parser');
+let logger = require('morgan');
 
+
+//引入模块
+let db = require('./DB/project_DB/index');
+let app = express();
+let bodyParser = require('body-parser');
+// var urlencodedParser = bodyParser.urlencoded({extented:false});
+
+// 引入路由模块
+let projectRouter = require('./routes/PM_Router');
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
-//引入模块
-var db = require('./DB/project_DB/index');
-//var db = require('./DB/project_DB/project_list_DB');
-// var user_db = require('/DB/user_DB);
-var router = require('./routes/PM_Router');
-var app = express();
-var bodyParser = require('body-parser');
-// var urlencodedParser = bodyParser.urlencoded({extented:false});
+
 // 打开数据连接
 db.connect();
 //当程序关闭的时候 关闭数据库连接
@@ -60,8 +62,8 @@ app.all('*', function (req, res, next) {
 });
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
-app.use('/', router);
-app.use('/delete', router);
+app.use('/projectApi', projectRouter);
+
 
 
 // catch 404 and forward to error handler
@@ -81,5 +83,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-
-// app.use('/', router);
