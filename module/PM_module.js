@@ -134,3 +134,11 @@ var editItem = function (req, res, next) {
     // })
 };
 exports.edit = editItem;
+
+// 添加progress分项
+let addProgress = function (req, res, next) {
+    let progress = req.body;
+    console.log(progress, "progress");
+
+};
+exports.addProgress = addProgress;

@@ -3,7 +3,7 @@ let Project = dbs.Project;
 
 //向数据库插入数据
 exports.add = function (list, cb) {
-    var item = new Project({
+    let project = new Project({
         number:  list.number, // 项目编号
         name:  list.name, // 项目名称
         category: list.category,// 项目类别
@@ -21,18 +21,14 @@ exports.add = function (list, cb) {
        // nextWeekPlan: list.nextWeekPlan, //下一步计划
         // leaderHelp: list.leaderHelp, // 领导帮助
     });
-    item.save(function (err) {
+    project.save(function (err) {
             if (err){
                 return cb(err);
             } else {
                 return cb(null);
             }
         });
-    // item.save().then(function (item) {
-    //
-    //     // console.log(item,'item');
-    //     return cb(null);
-    // });
+
 };
 
 // 数据库查询数据

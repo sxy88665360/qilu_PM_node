@@ -11,6 +11,7 @@ let impMatter_module = require('../module/impMatter_module');  // 督办事项
 * */
 //增加列表
 router.post('/new', PM_moudel.new);
+router.post('/addProgress', PM_moudel.addProgress);
 
 // 删除列表
 router.post('/delete', PM_moudel.delete);
