@@ -18,7 +18,7 @@ exports.add = function (list, cb) {
         proposer:  list.proposer, // 申请人
         department: list.department, // 立项部门
         progress: list.progress, // 项目进度
-       // nextWeekPlan: list.nextWeekPlan, //下一步计划
+        // nextWeekPlan: list.nextWeekPlan, //下一步计划
         // leaderHelp: list.leaderHelp, // 领导帮助
     });
     project.save(function (err) {
@@ -28,7 +28,6 @@ exports.add = function (list, cb) {
                 return cb(null);
             }
         });
-
 };
 
 // 数据库查询数据
@@ -64,14 +63,15 @@ var editList = function (id, list, cb) {
         if(err){
             cb(err);
         }else{
-            // console.log(result,"result"); //原数据
-            // console.log(list,"list"); // 更改后的数据
+            console.log(result,"result"); //原数据
+            console.log(list,"list"); // 更改后的数据
             result.number = list.number;
             result.category = list.category;
             result.target = list.target;
-            result.deadline = list.deadline;
-            result.manager = list.manager;
-            result.expectedReturn = list.expectedReturn;
+            // result.deadline = list.deadline;
+            // result.manager = list.manager;
+            // result.expectedReturn = list.expectedReturn;
+            result.progress = list.progress; //
             result.save(function (err) {
                 if(err){
                     cb(err);
@@ -107,3 +107,5 @@ exports.findAll = function(data, cb){
         }
     });
 };
+
+// 修改project

@@ -112,7 +112,7 @@ exports.delete = deleteItem;
 // 修改立项
 var editItem = function (req, res, next) {
     // console.log(req.query.id);
-    dao.edit(req.query.id, req.body, function (err, doc) {
+    dao.edit(req.body.id, req.body, function (err, doc) {
         if (err){
                     next(err);
                 } else{
@@ -134,11 +134,3 @@ var editItem = function (req, res, next) {
     // })
 };
 exports.edit = editItem;
-
-// 添加progress分项
-let addProgress = function (req, res, next) {
-    let progress = req.body;
-    console.log(progress, "progress");
-
-};
-exports.addProgress = addProgress;

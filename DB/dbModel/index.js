@@ -31,7 +31,6 @@ const Project = new Schema({
     progress: [Progress],
     //progress:Progress
 });
-
 const dbs = {};
 dbs.Project = mongoose.model('item',Project,'projectList');
 // dbs.Progress = mongoose.model('Project', Progress, 'progressList');
