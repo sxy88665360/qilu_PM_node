@@ -65,6 +65,10 @@ var editList = function (id, list, cb) {
         }else{
             console.log(result,"result"); //原数据
             console.log(list,"list"); // 更改后的数据
+            /*
+            *  未做数据对比
+            * */
+
             result.number = list.number;
             result.category = list.category;
             result.target = list.target;
