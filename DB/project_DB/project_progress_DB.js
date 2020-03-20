@@ -8,7 +8,8 @@ exports.add = function (list, cb) {
       number: list.number,
       name: list.name,
       principal: list.principal,
-      time: list.time
+      startTime: list.startTime,
+      endTime: list.endTime
   });
     ProItem.save((error)=>{
         if(error){

@@ -5,9 +5,10 @@ let Schema = mongoose.Schema;
 */
 const Progress = new Schema({
     number: String, // 项目编号
-    name: String, // 分享名称
+    name: String, // 分项名称
     principal: String, //负责人
-    time: Number, //完成时间
+    startTime: Number,  // 开始时间
+    endTime: Number // 完成时间
 });
 const Project = new Schema({
     number: String, // 项目编号
