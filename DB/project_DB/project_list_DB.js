@@ -68,21 +68,22 @@ var editList = function (id, list, cb) {
             /*
             *  未做数据对比
             * */
+             result.number = list.number; // 项目编号
+             result.name = list.name; //项目名称
+             result.category = list.category; // 项目类别
+             result.backGround = list.backGround; // 项目背景
+             result.target = list.target;// 项目目标
+             result.progress = list.progress; //
+             result.deadline = list.deadline; // 完成期限
+             result.totalInvestment = list.totalInvestment; // 计划投资总额
+             result.expectedReturn =  list.expectedReturn; // 预期收益
+             result.manager = list.manager; //项目经理
+             result.corePersonnel =  list.corePersonnel; //核心人员
+             result.keyPersonnel =  list.keyPersonnel; // 主要人员
+             result.proposer =  list.proposer; // 申请人
+             result.department = list.department; // 立项部门
 
-            // result.number = list.number; // 项目编号
-            // result.name = list.name; //项目名称
-            // result.category = list.category; // 项目类别
-            // result.backGround = list.backGround; // 项目背景
-            // result.target = list.target;// 项目目标
-            // result.progress = list.progress; //
-            // result.deadline = list.deadline; // 完成期限
-            // result.totalInvestment = list.totalInvestment; // 计划投资总额
-            // result.expectedReturn =  list.expectedReturn; // 预期收益
-            // result.manager = list.manager; //项目经理
-            // result.corePersonnel =  list.corePersonnel; //核心人员
-            // result.keyPersonnel =  list.keyPersonnel; // 主要人员
-            // result.proposer =  list.proposer; // 申请人
-            // result.department = list.department; // 立项部门
+
             result.save(function (err) {
                 if(err){
                     cb(err);

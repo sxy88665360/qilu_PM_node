@@ -112,13 +112,14 @@ exports.delete = deleteItem;
 // 修改立项
 var editItem = function (req, res, next) {
     // console.log(req.query.id);
-    dao.edit(req.body.id, req.body, function (err, doc) {
+    dao.edit(req.body._id, req.body, function (err, doc) {
         if (err){
                     next(err);
                 } else{
                     var response = {
-                        code:200,
-                        message: "修改成功"
+                        code: 1,
+                        message: 'OK',
+                        timestamp: Date.now(),
                     };
                    res.send(response);
                 }
