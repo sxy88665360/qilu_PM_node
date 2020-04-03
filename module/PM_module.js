@@ -1,12 +1,13 @@
-//var dao = require('../DB/project_DB/index');
 const dao = require('../DB/project_DB/project_list_DB');
+let dbs = require('../DB/dbModel/index');
+let Project = dbs.Project;
+
 // 检索所有的列表
-var findAll = function (req, res, next) {
+var findList = function (req, res, next) {
     var pageSize = null;
     var pageNum = null;
     var list = null;
     var data = req.body;
-    // console.log(data,"data");
     console.log(req.query,"query");
     var flag = 0;
     var arrList = {};
@@ -20,17 +21,16 @@ var findAll = function (req, res, next) {
         data = {};
     }
     // console.log(flag,"flag");
-    // console.log(arrList,"arrList");
+ console.log(arrList,"arrList");
     dao.findAll(arrList, function (err,doc) {
         if (err){
             next(err);
         }else{
-            var data = doc;
             var total = data.length;
-            console.log(pageSize,"pageSize");
-            var response = {
+           // console.log(pageSize,"pageSize");
+            let response = {
                 code: 1,
-                data:data,
+                data:doc,
                 total:total,
                 message: 'OK',
                 timestamp: Date.now(),
@@ -42,7 +42,7 @@ var findAll = function (req, res, next) {
 
 };
 
-exports.findList = findAll;
+exports.findList = findList;
 // 添加新的item
 var newItem = function (req, res, next) {
   //1.向数据库写入数据
@@ -135,3 +135,37 @@ var editItem = function (req, res, next) {
     // })
 };
 exports.edit = editItem;
+
+// 查找临期项
+let reminder = function(req, res, next) {
+    let query = req.query;
+    console.log(query);
+    Project.find({}, function(err, result){
+        if(err){
+            next(err);
+        }
+        else{
+        // console.log(JSON.parse(JSON.stringify(result)));
+          let data = JSON.parse(JSON.stringify(result));
+          let resultArr = [];
+          data.forEach((dataItem, dataIndex) => {
+            dataItem.progress.forEach((proItem, proIndex) => {
+                if(Math.abs(proItem.startTime - query.time) <= 1000*60*60*24 || Math.abs(proItem.endTime - query.time) <= 1000*60*60*24){
+                    // console.log("抓到了！");
+                    // console.log(proItem, dataItem, "抓到了！");
+                    resultArr.push(dataItem);
+                }
+              })
+          })
+          let response = {
+            code: 1,
+            data:resultArr,
+            message: 'OK',
+            timestamp: Date.now(),
+          } ;
+            res.send(response);
+        }
+    });
+
+};
+exports.reminder = reminder;

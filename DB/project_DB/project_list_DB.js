@@ -82,8 +82,6 @@ var editList = function (id, list, cb) {
              result.keyPersonnel =  list.keyPersonnel; // 主要人员
              result.proposer =  list.proposer; // 申请人
              result.department = list.department; // 立项部门
-
-
             result.save(function (err) {
                 if(err){
                     cb(err);
@@ -102,7 +100,7 @@ var findById = function (id, cb) {
       if(err){
           cb(err);
       }else{
-          console.log(doc, "ww")
+          // console.log(doc, "ww")
           cb(null,doc);
       }
   })
@@ -121,4 +119,19 @@ exports.findAll = function(data, cb){
     });
 };
 
-// 修改project
+//检索临期项
+// exports.reminder = function (data,cb) {
+//     let nowDate = Number(new Date());
+//     let number = data + 1000*60*60*24;
+//     // Project.aggregate(
+//     //     //     [{$unwind: $progress},
+//     //     //     {$match:{"progress.endTime":{$lte: number}}},
+//     //     //     {$project:{progress:1}}],function (err,doc) {
+//     //     //     if (err) {
+//     //     //         cb(null, err);
+//     //     //     } else {
+//     //     //         cb(null,doc);
+//     //     //     }
+//     //     // })
+//     // console.log()
+// };
