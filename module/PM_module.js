@@ -9,6 +9,7 @@ var findList = function (req, res, next) {
     var list = null;
     var data = req.body;
     console.log(req.query,"query");
+    console.log(data,"data");
     var flag = 0;
     var arrList = {};
     var arr = Object.keys(data);
@@ -21,7 +22,13 @@ var findList = function (req, res, next) {
         data = {};
     }
     // console.log(flag,"flag");
- console.log(arrList,"arrList");
+    //  {'number':'XM-19-00','department': {$in:['5','7']}}
+    console.log(arrList,"arrList");
+    // let reqData = {}
+    
+    // if(arrList.department){
+    //     reqData={'department': {'$in': [arrList.department]}}
+    // }
     dao.findAll(arrList, function (err,doc) {
         if (err){
             next(err);
@@ -65,6 +72,7 @@ var newItem = function (req, res, next) {
         proposer:  req.body.proposer, //项目经理
         department: req.body.department, // 立项部门
         progress: req.body.progress, // 项目进度
+        projectStatus:req.body.projectStatus // 项目状态
         // nextWeekPlan: req.body.nextWeekPlan, //下一步计划
         // leaderHelp: req.body.leaderHelp, // 领导帮助
     };
@@ -81,7 +89,7 @@ var newItem = function (req, res, next) {
                 code: 1,
                 message: 'OK',
                 timestamp: Date.now(),
-            } ;
+            };
             res.send(response);
            // res.send(list);
         }

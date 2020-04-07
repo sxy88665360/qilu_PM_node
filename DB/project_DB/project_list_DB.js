@@ -18,6 +18,7 @@ exports.add = function (list, cb) {
         proposer:  list.proposer, // 申请人
         department: list.department, // 立项部门
         progress: list.progress, // 项目进度
+        projectStatus:list.projectStatus ? '2' : '', // 项目状态
         // nextWeekPlan: list.nextWeekPlan, //下一步计划
         // leaderHelp: list.leaderHelp, // 领导帮助
     });
