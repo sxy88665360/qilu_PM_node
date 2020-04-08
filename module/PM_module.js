@@ -13,22 +13,19 @@ var findList = function (req, res, next) {
     var flag = 0;
     var arrList = {};
     var arr = Object.keys(data);
+    // console.log(arr,"arr");
     arr.forEach((item, index)=>{
-       if(data[item]) {
-           arrList[item] = data[item];
-       }
-    });
-    if(flag === 0){
-        data = {};
-    }
-    // console.log(flag,"flag");
+        if(data[item]) {
+            if((item === "department" && data[item].length) || item === "time"){
+                arrList[item] = {'$in': data[item]}
+            }else{
+                arrList[item] = data[item];
+            }
+            
+        }
+     });
     //  {'number':'XM-19-00','department': {$in:['5','7']}}
     console.log(arrList,"arrList");
-    // let reqData = {}
-    
-    // if(arrList.department){
-    //     reqData={'department': {'$in': [arrList.department]}}
-    // }
     dao.findAll(arrList, function (err,doc) {
         if (err){
             next(err);
@@ -55,7 +52,7 @@ var newItem = function (req, res, next) {
   //1.向数据库写入数据
   //2.列表需要更新
   //1.写入数据
-    // console.log(req.body,"body");
+  // console.log(req.body,"body");
     var list = {
         // category: req.body.category,
         number:  req.body.number, // 项目编号

@@ -13,8 +13,9 @@ let bodyParser = require('body-parser');
 
 // 引入路由模块
 let projectRouter = require('./routes/PM_Router');
+
 // var indexRouter = require('./routes/index');
-// var usersRouter = require('./routes/users');
+let usersRouter = require('./routes/users');
 
 // 打开数据连接
 db.connect();
@@ -63,7 +64,7 @@ app.all('*', function (req, res, next) {
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 app.use('/projectApi', projectRouter);
-
+app.use('/userApi/', usersRouter);
 
 
 // catch 404 and forward to error handler

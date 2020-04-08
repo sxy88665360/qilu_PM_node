@@ -1,7 +1,6 @@
 //
 let router = require('express').Router();
 let PM_moudel = require('../module/PM_module');
-let user_list_module = require('../module/user_list_module');
 let impMatter_module = require('../module/impMatter_module');  // 督办事项
 // 获取列表
 // router.get('/testSSM/selectProject.do', )
@@ -22,14 +21,6 @@ router.post('/findAll', PM_moudel.findList);
 // 事项提醒
 router.get('/reminder', PM_moudel.reminder);
 
-
-
-/*
-*用户列表操作
-* */
-// 登录
-router.post('/login', user_list_module.login);
-router.get('/userList', user_list_module.newUser);
 
 /*
 *  督办事项
