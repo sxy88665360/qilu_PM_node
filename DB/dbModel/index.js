@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 let Schema = mongoose.Schema;
+const dbs = {};
 /*
 * 项目列表
 */
@@ -27,8 +28,21 @@ const Project = new Schema({
     proposer:  String, // 申请人
     progress: [Progress],
 });
-const dbs = {};
 dbs.Project = mongoose.model('item',Project,'projectList');
 // dbs.Progress = mongoose.model('Project', Progress, 'progressList');
+
+/*
+* 用户列表
+*/
+const userSchema = new Schema({
+    realName: String,
+    loginName: String,
+    passWord: String,
+    department:String,
+    roleId:String
+});
+
+//返回document模板
+dbs.User= mongoose.model('userList',userSchema,'userList');
 module.exports = dbs;
 // exports.dbs = dbs;

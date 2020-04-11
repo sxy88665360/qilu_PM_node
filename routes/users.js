@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
 * */
 // 登录
 // router.post('/login', user_list_module.login);
-router.get('/userList', user_list_module.newUser);
+router.get('/userList/paginate', user_list_module.findUser);
+router.post('/userList/add', user_list_module.newUser);
 
 module.exports = router;

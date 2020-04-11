@@ -21,7 +21,6 @@ var findList = function (req, res, next) {
             }else{
                 arrList[item] = data[item];
             }
-            
         }
      });
     //  {'number':'XM-19-00','department': {$in:['5','7']}}
@@ -30,8 +29,8 @@ var findList = function (req, res, next) {
         if (err){
             next(err);
         }else{
-            var total = data.length;
-           // console.log(pageSize,"pageSize");
+            let total = doc.length;
+            // console.log(pageSize,"pageSize");
             let response = {
                 code: 1,
                 data:doc,

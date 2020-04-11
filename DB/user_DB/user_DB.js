@@ -1,23 +1,16 @@
+let dbs = require('../dbModel/index');
+let User = dbs.User
 /*
 * 用户列表
 *
 * */
-var mongoose = require('mongoose');
-
-var Schema = mongoose.Schema;
-var userSchema = new Schema({
-    username: String,
-    password: String,
-    department: String,
-});
-
-//返回document模板
-var ItemDoc = mongoose.model('userList',userSchema,'userList');
 exports.add_user = function (list, cb) {
-    var userItem = new ItemDoc ({
-        username: list.username,
-        password: list.password,
-        department:list.department
+    var userItem = new User ({
+        realName: list.realName,
+        loginName: list.loginName,
+        passWord: list.passWord,
+        department:list.department,
+        roleId:list.roleId
     });
     userItem.save(function (err) {
         if (err) {
@@ -27,7 +20,17 @@ exports.add_user = function (list, cb) {
         }
     })
 };
-
+// 查找用户
+exports.searchList = function (data, cb) {
+    User.find(data, function(err, result){
+        if(err) {
+            cb(null, err);
+        }
+        else {
+            cb(null, result);
+        }
+    })
+}
 // 用户登录
 exports.loginCheck = function (list, cb) {
     
