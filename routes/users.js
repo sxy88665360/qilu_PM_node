@@ -12,5 +12,6 @@ router.get('/', function(req, res, next) {
 // router.post('/login', user_list_module.login);
 router.get('/userList/paginate', user_list_module.findUser);
 router.post('/userList/add', user_list_module.newUser);
+router.post('/userList/delete', user_list_module.delUser);
 
 module.exports = router;

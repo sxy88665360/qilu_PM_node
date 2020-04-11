@@ -3,15 +3,16 @@ var user_dao = require('../DB/user_DB/user_DB');
 // 添加新的用户
 var newItem = function (req, res, next) {
     //1.向数据库写入数据
-
+    
     var data = {
         realName: req.body.realName,
         loginName: req.body.loginName,
-        passWord: req.body.passWord,
-        department:req.body.department,
-        roleId:req.body.roleId
+        passWord: req.body.password,
+        department:req.body.department[0],
+        roleId:req.body.roleId,
+        encPassword:req.body.encPassword
     };
-    // console.log(data,"userList");
+    console.log(data,"add userList");
     user_dao.add_user(data, function (err) {
         if (err){
             next(err);
@@ -36,7 +37,7 @@ let findUser = function (req, res, next) {
     //     roleId:req.query.roleId
     // }
     let data = req.query
-    // console.log(data,"data");
+    console.log(data,"data");
     if(data.department==='null') 
         data.department=''
     var objList = {};
@@ -67,7 +68,24 @@ let findUser = function (req, res, next) {
     })
 }
 exports.findUser = findUser;
+let delUser = function(req, res, next){
+    
+    user_dao.remove(req.query.id, function(err){
+        if(err){
+            next(err)
+        }else{
+            let response = {
+                code:200,
+                data:{
+                    message:"删除成功"
+                }
+            };
+            res.send(response);
+        }
+    })
+}
 
+exports.delUser = delUser;
 // 用户登录
 var login = function (req, res, next) {
   var list = {

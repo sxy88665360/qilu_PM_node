@@ -10,7 +10,8 @@ exports.add_user = function (list, cb) {
         loginName: list.loginName,
         passWord: list.passWord,
         department:list.department,
-        roleId:list.roleId
+        roleId:list.roleId,
+        encPassword:list.encPassword
     });
     userItem.save(function (err) {
         if (err) {
@@ -28,6 +29,21 @@ exports.searchList = function (data, cb) {
         }
         else {
             cb(null, result);
+        }
+    })
+}
+exports.remove = function (data, cb) {
+    User.findById(data,function(err, doc){
+        if(err){
+            cb(err)
+        }else{
+            doc.remove((err)=>{
+                if(err) {
+                    cb(err);
+                }else{
+                    cb(null);
+                }
+            })
         }
     })
 }

@@ -101,13 +101,18 @@ var deleteItem = function (req, res, next) {
     };
     console.log(deleteList,"data");
     dao.remove(deleteList, function (err) {
-        var response = {
-            code:200,
-            data:{
-                message:"删除成功"
-            }
-        };
-        res.send(response);
+        if(err){
+            next(err)
+        }else{
+            let response = {
+                code:200,
+                data:{
+                    message:"删除成功"
+                }
+            };
+            res.send(response);
+        }
+        
     })
    // res.send(deleteList);
 };

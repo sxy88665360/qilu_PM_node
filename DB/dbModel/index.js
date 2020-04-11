@@ -39,7 +39,8 @@ const userSchema = new Schema({
     loginName: String,
     passWord: String,
     department:String,
-    roleId:String
+    roleId:String,
+    encPassword:String
 });
 
 //返回document模板
