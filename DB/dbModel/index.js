@@ -34,9 +34,10 @@ const Project = new Schema({
     keyPersonnel: String, //主要人员
     department: String, // 立项部门
     proposer:  String, // 申请人
+    projectStatus: String, // 项目状态
     progress: [Progress],
 });
-dbs.Project = mongoose.model('item',Project,'projectList');
+dbs.Project = mongoose.model('item', Project, 'projectList');
 // dbs.Progress = mongoose.model('Project', Progress, 'progressList');
 
 /*
