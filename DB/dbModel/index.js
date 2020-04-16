@@ -9,7 +9,14 @@ const Progress = new Schema({
     name: String, // 分项名称
     principal: String, //负责人
     startTime: Number,  // 开始时间
-    endTime: Number // 完成时间
+    endTime: Number, // 完成时间
+    isEnd:String, // 是否完成
+    isStart:String,// 是否开始
+    isCompletedOnTime: Boolean,// 是否按期完成
+    realStartTime:Number,// 实际开始时间
+    realEndTime:Number, //实际结束时间
+    unDoneReason:String,
+    process:String
 });
 const Project = new Schema({
     number: String, // 项目编号
@@ -19,6 +26,7 @@ const Project = new Schema({
     backGround: String, // 项目背景
     target: String, // 项目目标
     createTime: Number, // 立项时间
+    planTime: Number, // 计划完成时间
     deadline: Number, // 项目期限
     manager:String, //项目经理
     expectedReturn: String, // 预期收益

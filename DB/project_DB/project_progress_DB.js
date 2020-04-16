@@ -9,7 +9,14 @@ exports.add = function (list, cb) {
       name: list.name,
       principal: list.principal,
       startTime: list.startTime,
-      endTime: list.endTime
+      endTime: list.endTime,
+      realStartTime: list.realStartTime,
+      realEndTime: list.realEndTime,
+      isEnd:list.isEnd,
+      isStart:list.isStart,// 是否开始
+      isCompletedOnTime: list.isCompletedOnTime,// 是否按期完成
+      unDoneReason:list.unDoneReason,
+      process:list.process
   });
     ProItem.save((error)=>{
         if(error){

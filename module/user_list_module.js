@@ -70,7 +70,7 @@ let findUser = function (req, res, next) {
 exports.findUser = findUser;
 let delUser = function(req, res, next){
     
-    user_dao.remove(req.query.id, function(err){
+    user_dao.deleteUser(req.query.id, function(err){
         if(err){
             next(err)
         }else{

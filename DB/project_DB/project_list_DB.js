@@ -12,6 +12,7 @@ exports.add = function (list, cb) {
         deadline: list.deadline, // 完成期限
         totalInvestment: list.totalInvestment, // 计划投资总额
         expectedReturn:  list.expectedReturn, // 预期收益
+        planTime: list.planTime,
         manager:  list.manager, //项目经理
         corePersonnel:  list.corePersonnel, //核心人员
         keyPersonnel:  list.keyPersonnel, // 主要人员
@@ -83,7 +84,9 @@ var editList = function (id, list, cb) {
              result.keyPersonnel =  list.keyPersonnel; // 主要人员
              result.proposer =  list.proposer; // 申请人
              result.department = list.department; // 立项部门
-            result.save(function (err) {
+             result.planTime = list.planTime;// 计划完成时间
+             
+             result.save(function (err) {
                 if(err){
                     cb(err);
                 }else{

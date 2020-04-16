@@ -68,9 +68,8 @@ var newItem = function (req, res, next) {
         proposer:  req.body.proposer, //项目经理
         department: req.body.department, // 立项部门
         progress: req.body.progress, // 项目进度
-        projectStatus:req.body.projectStatus // 项目状态
-        // nextWeekPlan: req.body.nextWeekPlan, //下一步计划
-        // leaderHelp: req.body.leaderHelp, // 领导帮助
+        projectStatus:req.body.projectStatus, // 项目状态
+        planTime: req.body.planTime // 计划完成时间
     };
     console.log(list, "list");
     // if(!req.bady){
@@ -156,12 +155,13 @@ let reminder = function(req, res, next) {
         else{
         // console.log(JSON.parse(JSON.stringify(result)));
           let data = JSON.parse(JSON.stringify(result));
+          console.log(data,"data")
           let resultArr = [];
           data.forEach((dataItem, dataIndex) => {
             dataItem.progress.forEach((proItem, proIndex) => {
-                if(Math.abs(proItem.startTime - query.time) <= 1000*60*60*24 || Math.abs(proItem.endTime - query.time) <= 1000*60*60*24){
+                if(Math.abs(proItem.startTime - query.time) <= 2000*60*60*24 || Math.abs(proItem.endTime - query.time) <= 2000*60*60*24){
                     // console.log("抓到了！");
-                    // console.log(proItem, dataItem, "抓到了！");
+                    console.log(proItem, dataItem, "抓到了！");
                     resultArr.push(dataItem);
                 }
               })

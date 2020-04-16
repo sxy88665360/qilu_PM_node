@@ -32,7 +32,7 @@ exports.searchList = function (data, cb) {
         }
     })
 }
-exports.remove = function (data, cb) {
+exports.deleteUser = function (data, cb) {
     User.findById(data,function(err, doc){
         if(err){
             cb(err)
