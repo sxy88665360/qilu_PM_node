@@ -112,7 +112,7 @@ var findById = function (id, cb) {
 exports.findById = findById;
 
 //搜索出所有数据
-exports.findAll = function(data, cb){
+exports.findItem = function(data, cb){
     Project.find(data, function(err, result){
         if(err){
             cb(null, err);

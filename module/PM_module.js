@@ -25,7 +25,7 @@ var findList = function (req, res, next) {
      });
     //  {'number':'XM-19-00','department': {$in:['5','7']}}
     console.log(arrList,"arrList");
-    dao.findAll(arrList, function (err,doc) {
+    dao.findItem(arrList, function (err,doc) {
         if (err){
             next(err);
         }else{
