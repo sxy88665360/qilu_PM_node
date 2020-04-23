@@ -85,7 +85,7 @@ var editList = function (id, list, cb) {
              result.proposer =  list.proposer; // 申请人
              result.department = list.department; // 立项部门
              result.planTime = list.planTime;// 计划完成时间
-             
+             result.projectStatus = list.projectStatus;// 项目状态
              result.save(function (err) {
                 if(err){
                     cb(err);
