@@ -18,6 +18,10 @@ const Progress = new Schema({
     unDoneReason:String,
     process:String
 });
+const SubLog = new Schema({
+    subTime: Number, // 提交时间
+    subText: String, // 项目进展
+})
 const Project = new Schema({
     number: String, // 项目编号
     category: String, // 项目类别
@@ -36,9 +40,10 @@ const Project = new Schema({
     proposer:  String, // 申请人
     projectStatus: String, // 项目状态
     progress: [Progress],
+    subLog: [SubLog]
 });
-dbs.Project = mongoose.model('item', Project, 'projectList');
-// dbs.Progress = mongoose.model('Project', Progress, 'progressList');
+ dbs.Project = mongoose.model('item', Project, 'projectList'); // 正式数据路
+
 
 /*
 * 用户列表
