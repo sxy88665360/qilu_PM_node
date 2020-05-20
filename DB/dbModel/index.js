@@ -20,7 +20,7 @@ const Progress = new Schema({
 });
 const SubLog = new Schema({
     subTime: Number, // 提交时间
-    subText: String, // 项目进展
+    subPro: Array, // 项目进展
 })
 const Project = new Schema({
     number: String, // 项目编号
@@ -39,8 +39,9 @@ const Project = new Schema({
     department: String, // 立项部门
     proposer:  String, // 申请人
     projectStatus: String, // 项目状态
-    progress: [Progress],
-    subLog: [SubLog]
+    subTime:Number, //提报时间
+    progress: [Progress], // 项目进度表
+    subLog: [SubLog]  // 提交日志
 });
  dbs.Project = mongoose.model('item', Project, 'projectList'); // 正式数据路
 

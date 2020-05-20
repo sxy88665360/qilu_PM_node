@@ -69,7 +69,9 @@ var newItem = function (req, res, next) {
         department: req.body.department, // 立项部门
         progress: req.body.progress, // 项目进度
         projectStatus:req.body.projectStatus, // 项目状态
-        planTime: req.body.planTime // 计划完成时间
+        planTime: req.body.planTime, // 计划完成时间
+        subTime: req.body.subTime, // 修改时间
+        subLog: req.body.subLog, // 提交记录
     };
     console.log(list, "list");
     // if(!req.bady){
@@ -120,17 +122,18 @@ exports.delete = deleteItem;
 // 修改立项
 var editItem = function (req, res, next) {
     // console.log(req.query.id);
+
     dao.edit(req.body._id, req.body, function (err, doc) {
         if (err){
-                    next(err);
-                } else{
-                    var response = {
-                        code: 1,
-                        message: 'OK',
-                        timestamp: Date.now(),
-                    };
-                   res.send(response);
-                }
+            next(err);
+        } else{
+            var response = {
+                code: 1,
+                message: 'OK',
+                timestamp: Date.now(),
+            };
+            res.send(response);
+        }
     })
     // dao.findById(req.query.id, function (err, doc) {
     //     if (err){
@@ -161,7 +164,7 @@ let reminder = function(req, res, next) {
             dataItem.progress.forEach((proItem, proIndex) => {
                 if(Math.abs(proItem.startTime - query.time) <= 2000*60*60*24 || Math.abs(proItem.endTime - query.time) <= 2000*60*60*24){
                     // console.log("抓到了！");
-                    console.log(proItem, dataItem, "抓到了！");
+                    // console.log(proItem, dataItem, "抓到了！");
                     resultArr.push(dataItem);
                 }
               })

@@ -3,6 +3,9 @@ let Project = dbs.Project;
 
 //向数据库插入数据
 exports.add = function (list, cb) {
+    // list.forEach(element => {
+    //     console.log(element,"element");
+    // });
     let project = new Project({
         number:  list.number, // 项目编号
         name:  list.name, // 项目名称
@@ -20,6 +23,7 @@ exports.add = function (list, cb) {
         department: list.department, // 立项部门
         progress: list.progress, // 项目进度
         projectStatus:list.projectStatus ? '2' : '', // 项目状态
+        subTime: list.subTime,
         // nextWeekPlan: list.nextWeekPlan, //下一步计划
         // leaderHelp: list.leaderHelp, // 领导帮助
     });
@@ -86,6 +90,13 @@ var editList = function (id, list, cb) {
              result.department = list.department; // 立项部门
              result.planTime = list.planTime;// 计划完成时间
              result.projectStatus = list.projectStatus;// 项目状态
+             result.subTime = list.subTime; // 提交时间
+
+             let log = {
+                 subTime: list.subTime, // 提交时间
+                 subPro: list.progress
+             };
+             result.subLog.push(log);
              result.save(function (err) {
                 if(err){
                     cb(err);
