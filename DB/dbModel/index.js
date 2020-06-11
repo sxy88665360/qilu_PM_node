@@ -4,6 +4,10 @@ const dbs = {};
 /*
 * 项目列表
 */
+const SubLog = new Schema({
+    subTime: Number, // 提交时间
+    subPro: String, // 项目进展
+})
 const Progress = new Schema({
     number: String, // 项目编号
     name: String, // 分项名称
@@ -15,13 +19,15 @@ const Progress = new Schema({
     isCompletedOnTime: Boolean,// 是否按期完成
     realStartTime:Number,// 实际开始时间
     realEndTime:Number, //实际结束时间
-    unDoneReason:String,
-    process:String
+    unDoneReason:String, // 未完成原因
+    process:String, // 当前进展
+    subLog:[SubLog],  // 提交记录
 });
-const SubLog = new Schema({
-    subTime: Number, // 提交时间
-    subPro: Array, // 项目进展
-})
+// subLog:[{
+//     subTime: Number, // 提交时间
+//     subPro: String, // 项目进展
+// }],  // 提交记录
+
 const Project = new Schema({
     number: String, // 项目编号
     category: String, // 项目类别
@@ -41,10 +47,10 @@ const Project = new Schema({
     projectStatus: String, // 项目状态
     subTime:Number, //提报时间
     progress: [Progress], // 项目进度表
-    subLog: [SubLog]  // 提交日志
+    // subLog: [SubLog],  // 提交日志
+    prize: Number
 });
  dbs.Project = mongoose.model('item', Project, 'projectList'); // 正式数据路
-
 
 /*
 * 用户列表

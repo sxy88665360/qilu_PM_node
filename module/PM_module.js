@@ -8,8 +8,8 @@ var findList = function (req, res, next) {
     var pageNum = null;
     var list = null;
     var data = req.body;
-    console.log(req.query,"query");
-    console.log(data,"data");
+    // console.log(req.query,"query");
+    // console.log(data,"data");
     var flag = 0;
     var arrList = {};
     var arr = Object.keys(data);
@@ -24,7 +24,7 @@ var findList = function (req, res, next) {
         }
      });
     //  {'number':'XM-19-00','department': {$in:['5','7']}}
-    console.log(arrList,"arrList");
+    // console.log(arrList,"arrList");
     dao.findItem(arrList, function (err,doc) {
         if (err){
             next(err);
@@ -41,7 +41,7 @@ var findList = function (req, res, next) {
             res.send(response);
         }
     });
-    // console.log(data,"data");
+     // console.log(data,"data");
 
 };
 
@@ -51,7 +51,6 @@ var newItem = function (req, res, next) {
   //1.向数据库写入数据
   //2.列表需要更新
   //1.写入数据
-  // console.log(req.body,"body");
     var list = {
         // category: req.body.category,
         number:  req.body.number, // 项目编号
@@ -71,13 +70,10 @@ var newItem = function (req, res, next) {
         projectStatus:req.body.projectStatus, // 项目状态
         planTime: req.body.planTime, // 计划完成时间
         subTime: req.body.subTime, // 修改时间
-        subLog: req.body.subLog, // 提交记录
+        // subLog: req.body.subLog, // 提交记录
+        prize:req.body.prize, // 奖励金额
     };
-    console.log(list, "list");
-    // if(!req.bady){
-    //     var error = new error('无数据提交');
-    //     next(error);
-    // }
+    
     dao.add(list, function (err) {
         if (err){
             next(err);
@@ -121,8 +117,8 @@ exports.delete = deleteItem;
 
 // 修改立项
 var editItem = function (req, res, next) {
-    // console.log(req.query.id);
-
+    //console.log(JSON.parse(req.body) ,"req.body");
+    //let reqDate = req.body
     dao.edit(req.body._id, req.body, function (err, doc) {
         if (err){
             next(err);
