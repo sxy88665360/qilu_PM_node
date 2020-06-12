@@ -22,6 +22,7 @@ exports.add = function (list, cb) {
         projectStatus:list.projectStatus, // 项目状态
         subTime: list.subTime,
         prize: list.prize,
+        eventType: list.eventType,
         // nextWeekPlan: list.nextWeekPlan, //下一步计划
         // leaderHelp: list.leaderHelp, // 领导帮助
     }
@@ -128,7 +129,8 @@ var editList = function (id, list, cb) {
              result.projectStatus = list.projectStatus;// 项目状态
              result.subTime = list.subTime; // 提交时间
              result.prize = list.prize; // 奖励金额
-             console.log(JSON.stringify(result.progress) ,"pro")
+             result.eventType = list.eventType // 事项类型
+             // console.log(JSON.stringify(result.progress) ,"pro")
             //  let log = {
             //      subTime: list.subTime, // 提交时间
             //      subPro: list.progress

@@ -48,7 +48,8 @@ const Project = new Schema({
     subTime:Number, //提报时间
     progress: [Progress], // 项目进度表
     // subLog: [SubLog],  // 提交日志
-    prize: Number
+    prize: Number,
+    eventType: String // 事项类型 "1" 项目立项  "2"  督办事项
 });
  dbs.Project = mongoose.model('item', Project, 'projectList'); // 正式数据路
 
