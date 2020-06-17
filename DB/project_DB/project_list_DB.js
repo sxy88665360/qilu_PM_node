@@ -23,6 +23,8 @@ exports.add = function (list, cb) {
         subTime: list.subTime,
         prize: list.prize,
         eventType: list.eventType,
+        matterType: list.matterType,
+        creatTime: list.creatTime,
         // nextWeekPlan: list.nextWeekPlan, //下一步计划
         // leaderHelp: list.leaderHelp, // 领导帮助
     }
@@ -127,16 +129,17 @@ var editList = function (id, list, cb) {
              result.department = list.department; // 立项部门
              result.planTime = list.planTime;// 计划完成时间
              result.projectStatus = list.projectStatus;// 项目状态
-             result.subTime = list.subTime; // 提交时间
+             result.subTime = Number(new Date()); // 提交时间
              result.prize = list.prize; // 奖励金额
              result.eventType = list.eventType // 事项类型
+             result.matterType = list.matterType // 督办类型
+             result.creatTime = list.creatTime // 创建时间
              // console.log(JSON.stringify(result.progress) ,"pro")
             //  let log = {
             //      subTime: list.subTime, // 提交时间
             //      subPro: list.progress
             //  };
             //  result.subLog.push(log);
-            
              result.save(function (err) {
                 if(err){
                     cb(err);

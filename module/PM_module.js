@@ -73,6 +73,8 @@ var newItem = function (req, res, next) {
         // subLog: req.body.subLog, // 提交记录
         prize:req.body.prize, // 奖励金额
         eventType: req.body.eventType, // 事项类型  "1" 项目立项  "2"  督办事项
+        matterType:req.body.matterType, //督办类型  "1" 攻关课题  "2"  会议督办  "3" 管理提升
+        creatTime:req.body.creatTime, // 创建时间、督办会议时间
     };
     console.log(list,"list")
     dao.add(list, function (err) {
