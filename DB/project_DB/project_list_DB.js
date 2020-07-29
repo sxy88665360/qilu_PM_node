@@ -90,25 +90,36 @@ var editList = function (id, list, cb) {
              let proArr = list.progress // 更改后数据
              let subLogObj = []
              proArr.forEach((proItem,index)=>{ //遍历提交的表单
-                //result.progress[index] = proItem;
-                // console.log(proItem,"shuju");
                 let sameArr = result.progress.filter((item)=>{
                     return item._id == proItem._id
                 })
                 // console.log(sameArr,"sameArr"); // 已查找到数据库中的数据
                 if(sameArr.length==1){ // 该分项存在，无需创建
                     let obj = {
-                        subTime:new Date().getTime(),
+                        // subTime:new Date().getTime(),
+                        subTime:proItem.submitTime?proItem.submitTime:new Date().getTime(),
                         subPro:proItem.process
                     }
-                    result.progress[index].subLog.push(obj);
+                     // 填充数据排序，使用场景，后期补充数据。
+                     let subLogArr = result.progress[index].subLog;
+                     subLogArr.push(obj);
+                     // 排序
+                     let ownSort =  (a,b) =>{
+                         if(a.subTime <= b.subTime) return 0
+                         if(a.subTime >  b.subTime) return 1
+                     } 
+                     subLogArr.sort(ownSort);
+                     result.progress[index].subLog = subLogArr;
+                    // result.progress[index].subLog.push(obj);
                     // console.log(result.progress[index].subLog ,"result.progress[index].subLog");
                 }else {  // 该分项不存在，需创建
                     let obj = {
-                        subTime:new Date().getTime(),
+                        //subTime:new Date().getTime(),
+                        subTime:proItem.submitTime?proItem.submitTime:new Date().getTime(),
                         subPro:proItem.process ? proItem.process : "新增"
                     } 
-                    result.progress[index].subLog.push(obj);
+                
+                    result.progress[index].subLog.push(obj); 
                     // console.log(result.progress[index].subLog,"result.progress[index].subLog");
                 }
              })
@@ -117,8 +128,6 @@ var editList = function (id, list, cb) {
              result.category = list.category; // 项目类别
              result.backGround = list.backGround; // 项目背景
              result.target = list.target;// 项目目标
-             // result.progress = list.progress; //
-//             result.progress = list.progress; //
              result.deadline = list.deadline; // 完成期限
              result.totalInvestment = list.totalInvestment; // 计划投资总额
              result.expectedReturn =  list.expectedReturn; // 预期收益
