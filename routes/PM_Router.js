@@ -17,7 +17,7 @@ router.post('/edit', PM_moudel.edit);
 router.post('/delete', PM_moudel.delete);
 
 // 检索所有列表
-router.post('/findAll', PM_moudel.findList);
+// router.post('/findAll', PM_moudel.findList);
 // 事项提醒
 router.get('/reminder', PM_moudel.reminder);
 
